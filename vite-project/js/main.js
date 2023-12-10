@@ -14,4 +14,17 @@ async function getData(URL){
   } */
 }
 
-getData(URL);
+/*  Array.from.sync(getData).then((array)=> console.log(array)) */
+
+getData(URL); 
+
+
+function insert(array){
+  array.forEach((object)=> {
+    DOMSelectors.gallery.insertAdjacentHTML(
+      "afterbegin"
+      `<div class="card"><h2>${object.name}</h2>
+      </div>`
+  )})};
+
+  insert(pokemon)
