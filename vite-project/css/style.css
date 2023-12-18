@@ -1,62 +1,53 @@
-.head {
-  text-align: center;
-  transition: all 800ms ;
-  
- 
-
-}
-
 .gallery{
   margin: 1rem auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 80vw;
-   
- 
+  width: 80vw;   
 }
 
 .card{
   height: 50vh;
   margin: 2rem 0;
-  width: 28%;
+  width: 22%;
   background-color: rgba(125, 121, 129, 0.265);
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 7px 10px rgb(184, 199, 192);
+  box-shadow: 7px 10px rgb(101, 164, 135);
   transition: all 800ms ;
-  background-color: var(--primary)
-  
   
 }
 
+@media screen and (max-width: 900px){
+  .card{
+      width: 40%;
+  }
+}
 
-.title{
+@media screen and (max-width: 600px){
+  .card {
+      width: 100%;
+  }
+}
+
+ 
+
+
+.card-title{
   font-size: 2.0rem;
   align-items: center;
-  text-align: center;
 }
 
 .image{
- width: 50%;
+  width: 100%; 
 }
 
-.artist{
-  font-size: 1.2rem;
+.h1{
+  font-size: 4.0rem;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: 30px;
 }
 
-.price{
-  text-align: center;
-  align-items: baseline;
-}
-
-.buttons{
-  align-items: center;
- 
-  transition: all 800ms ;
-
-}
 
