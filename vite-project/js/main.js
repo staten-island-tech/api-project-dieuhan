@@ -4,11 +4,11 @@ import { DOMSelectors } from './dom';
 function insert(arr){
   arr.forEach((object)=> {
     DOMSelectors.gallery.insertAdjacentHTML(
-      `afterbegin`, `<div class="btn_container"> 
-      </div>
-      <div class="gallery">
+      `afterbegin`, ` 
       <div class="card">
-      <h2>${object.school_name}</h2>
+      <h2 class="school">${object.school_name}</h2>
+      <div class="buttons">
+      <button class="btn">new info</button>
       </div>
       </div>`
     )})};
@@ -36,7 +36,7 @@ const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
     const response = await fetch(URL);
     const cards = await response.json();
    insert(cards)
-    cards.forEach((cards)=> (cards.school_name, cards.borough));
+    cards.forEach((cards)=> (cards.school_name));
   } catch(error){
     console.log(error);
   }
