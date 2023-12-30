@@ -32,3 +32,18 @@ function insert(array){
       </div>
       </div>`
   )})};
+
+  /*  async function getData(URL){
+  try{
+    const response = await fetch(URL);
+    if (response.status != 200) {
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    insert(data)
+    cards.forEach((cards)=> console.log(cards.school_name));
+  } catch(error){
+    console.log(error, "pls try again");
+    document.querySelector("h1").textContent = "pls try again";
+  }
+}; */
