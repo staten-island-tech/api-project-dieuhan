@@ -52,11 +52,11 @@ function clear_screen(){
   insert(newarr);
  }));
 
- DOMSelectors.buttons.addEventListener("click", function(){
+/*  DOMSelectors.buttons.addEventListener("click", function(){
   clear_screen();
  insert(arr)
  });
-
+ */
 /*  DOMSelectors.buttons.addEventListener('click', function (event) {
   const clickedButton = event.target;
   if (

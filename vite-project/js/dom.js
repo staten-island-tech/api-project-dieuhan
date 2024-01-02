@@ -5,6 +5,6 @@ export const DOMSelectors = {
     h2: document.querySelector(".h2"),
     h3: document.querySelector(".h3"),
     btn: document.querySelectorAll(".btn"),
-    card: document.querySelector(".card"),
+    
     //buttons: document.querySelector(".buttons")
 };
