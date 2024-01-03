@@ -7,25 +7,40 @@ function insert(arr){
       `afterbegin`, ` 
       <div class="card">
       <h2 class="school">${object.school_name}</h2>
-      <div class="buttons">
+      <div class="button">
       <button class="btn">new info</button>
       </div>
       </div>`
     )})};
+
+   
 
     
 
 
 const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
 
-let arr = [];
+
  async function getData(URL){
   try{
     const response = await fetch(URL);
     const cards = await response.json();
    insert(cards)
-   arr = cards;
-    cards.forEach((cards)=> (cards.school_name));
+   console.log(cards);
+   cards.forEach((cards)=> (cards.school_name));
+   let arr = cards;
+   buttons.forEach((btn)=> 
+   btn.addEventListener("click", function(){
+   
+    let filter = btn.textContent.toUpperCase(); 
+    let pls = cards.filter((cards)=> cards[0].borough === filter); 
+    clear_screen();
+   console.log(cards[0].borough);
+    insert(pls); 
+    console.log(pls);
+   }));
+ return arr;
+   
   } catch(error){
     console.log("Error fetching data", error);
   }
@@ -33,7 +48,7 @@ let arr = [];
 
 getData(URL);
 
- 
+
 
 function clear_screen(){
   const element = document.querySelector(".gallery");
@@ -43,14 +58,7 @@ function clear_screen(){
  
  let buttons = document.querySelectorAll(".mbtn, .qbtn, .bkbtn, .sibtn, .bxbtn")
 
- buttons.forEach((btn)=> 
- btn.addEventListener("click", function(){
 
-  let card = btn.textContent;
-  let newarr = arr.filter((cards)=> cards.borough === card);
-  clear_screen();
-  insert(newarr);
- }));
 
 /*  DOMSelectors.buttons.addEventListener("click", function(){
   clear_screen();
