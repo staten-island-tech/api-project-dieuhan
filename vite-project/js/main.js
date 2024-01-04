@@ -33,7 +33,7 @@ const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
    btn.addEventListener("click", function(){
    
     let filter = btn.textContent.toUpperCase(); 
-    let pls = cards.filter((cards)=> cards[0].borough === filter); 
+    let pls = cards.filter((cards)=> cards.borough === filter); 
     clear_screen();
    console.log(cards[0].borough);
     insert(pls); 
@@ -45,6 +45,7 @@ const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
     console.log("Error fetching data", error);
   }
 };
+
 
 getData(URL);
 
