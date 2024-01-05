@@ -52,5 +52,11 @@
 
 .school{
   text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
+.buttons{
+  align-items: center;
+  text-align: center;
+}

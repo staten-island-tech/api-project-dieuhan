@@ -8,13 +8,20 @@ function insert(arr){
       <div class="card">
       <h2 class="school">${object.school_name}</h2>
       <div class="button">
-      <button class="btn">new info</button>
+      <button onclick="displayText()">Click Me!</button>
+      <div id="textField" style="display: none;">
+  This is the text that appears when you click the button.
+</div>
       </div>
       </div>`
     )})};
 
+    function displayText() {
+      var text = document.getElementById("textField");
+      text.style.display = "block";
+    }
    
-
+//displayText();
     
 
 
@@ -33,9 +40,9 @@ const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
    btn.addEventListener("click", function(){
    
     let filter = btn.textContent.toUpperCase(); 
-    let pls = cards.filter((cards)=> cards.borough === filter); 
+    let pls = cards.filter((cards)=> cards.borough.replaceAll(" ","") === filter); 
     clear_screen();
-   console.log(cards[0].borough);
+   //console.log(cards[0].borough);
     insert(pls); 
     console.log(pls);
    }));
