@@ -1,4 +1,39 @@
 
+
+// THESE ARE ALL MY FAILED CODES
+
+/*  DOMSelectors.buttons.addEventListener("click", function(){
+  clear_screen();
+ insert(arr)
+ });
+ */
+/*  DOMSelectors.buttons.addEventListener('click', function (event) {
+  const clickedButton = event.target;
+  if (
+    clickedButton.classList.contains('mbtn') ||
+    clickedButton.classList.contains('qbtn') ||
+    clickedButton.classList.contains('bkbtn') ||
+    clickedButton.classList.contains('sibtn') ||
+    clickedButton.classList.contains('bxbtn')
+  ) {
+    let borough = clickedButton.textContent.toLowerCase();
+    let newarr = arr.filter((card) => card.borough.toLowerCase() === borough);
+    clearScreen();
+    insert(newarr);
+  }
+});
+
+// Assuming DOMSelectors.showAllButton represents the "Show All" button
+DOMSelectors.showAllButton.addEventListener('click', function () {
+  clearScreen();
+  insert(arr);
+});
+ */
+
+
+
+
+
 const URL = "https://pokeapi.co/api/v2/pokemon?limit=151";
 async function getData(URL){
   try{

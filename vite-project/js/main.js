@@ -1,97 +1,82 @@
 import '../css/style.css'
 import { DOMSelectors } from './dom';
 
-function insert(arr){
-  arr.forEach((object)=> {
+function insert(arr) {
+  arr.forEach((object) => {
     DOMSelectors.gallery.insertAdjacentHTML(
-      `afterbegin`, ` 
-      <div class="card">
-      <h2 class="school">${object.school_name}</h2>
-      <div class="button">
-      <button onclick="displayText()">Click Me!</button>
-      <div id="textField" style="display: none;">
-  This is the text that appears when you click the button.
-</div>
-      </div>
+      `afterbegin`,
+      `<div class="card">
+        <h2 class="school">${object.school_name}</h2>
       </div>`
-    )})};
+    );
+  });
+}
 
-    function displayText() {
-      var text = document.getElementById("textField");
-      text.style.display = "block";
-    }
-   
-//displayText();
-    
+const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json";
 
-
-const URL = "https://data.cityofnewyork.us/resource/uq7m-95z8.json"
-
-
- async function getData(URL){
-  try{
+async function getData(URL) {
+  try {
     const response = await fetch(URL);
     const cards = await response.json();
-   insert(cards)
-   console.log(cards);
-   cards.forEach((cards)=> (cards.school_name));
-   let arr = cards;
-   buttons.forEach((btn)=> 
-   btn.addEventListener("click", function(){
+    insert(cards);
+    console.log(cards);
+
+    const searchBtn = document.getElementById("searchBtn");
+    searchBtn.addEventListener("click", function () {
+      console.log("Search button clicked");
+      handleSearch(cards);
+    });
+
    
-    let filter = btn.textContent.toUpperCase(); 
-    let pls = cards.filter((cards)=> cards.borough.replaceAll(" ","") === filter); 
-    clear_screen();
-   //console.log(cards[0].borough);
-    insert(pls); 
-    console.log(pls);
-   }));
- return arr;
-   
-  } catch(error){
+    let buttons = document.querySelectorAll(".mbtn, .qbtn, .bkbtn, .sibtn, .bxbtn");
+    buttons.forEach((btn) =>
+      btn.addEventListener("click", function () {
+        let filtered = btn.textContent.toUpperCase();
+        let pls = cards.filter((card) => card.borough.replaceAll(" ", "") === filtered);
+        clear_screen();
+        insert(pls);
+        console.log(pls);
+      })
+    );
+
+    const showAllBtn = document.getElementById("showAllBtn");
+showAllBtn.addEventListener("click", function () {
+  clear_screen();
+  insert(cards); 
+  console.log("All schools:", cards);
+});
+
+    return cards;
+  } catch (error) {
     console.log("Error fetching data", error);
   }
-};
+}
+
+function clear_screen() {
+  const element = document.querySelector(".gallery");
+  element.innerHTML = "";
+}
+
+function handleSearch(cards) {
+  const searchInput = document.getElementById("schoolSearch").value.trim();
+  console.log("Search input:", searchInput);
+  const filteredSchools = cards.filter((card) => card.school_name.includes(searchInput));
+  console.log("Filtered schools:", filteredSchools);
+  clear_screen();
+
+  if (filteredSchools.length === 0) {
+    DOMSelectors.gallery.insertAdjacentHTML(
+      "afterbegin",
+      `<p class="error-message">No schools found for "${searchInput}"</p>`
+    );
+  } else {
+    insert(filteredSchools);
+    console.log("Filtered schools:", filteredSchools);
+  }
+}
+  
 
 
 getData(URL);
 
 
-
-function clear_screen(){
-  const element = document.querySelector(".gallery");
-  element.innerHTML = ""
- };
-
- 
- let buttons = document.querySelectorAll(".mbtn, .qbtn, .bkbtn, .sibtn, .bxbtn")
-
-
-
-/*  DOMSelectors.buttons.addEventListener("click", function(){
-  clear_screen();
- insert(arr)
- });
- */
-/*  DOMSelectors.buttons.addEventListener('click', function (event) {
-  const clickedButton = event.target;
-  if (
-    clickedButton.classList.contains('mbtn') ||
-    clickedButton.classList.contains('qbtn') ||
-    clickedButton.classList.contains('bkbtn') ||
-    clickedButton.classList.contains('sibtn') ||
-    clickedButton.classList.contains('bxbtn')
-  ) {
-    let borough = clickedButton.textContent.toLowerCase();
-    let newarr = arr.filter((card) => card.borough.toLowerCase() === borough);
-    clearScreen();
-    insert(newarr);
-  }
-});
-
-// Assuming DOMSelectors.showAllButton represents the "Show All" button
-DOMSelectors.showAllButton.addEventListener('click', function () {
-  clearScreen();
-  insert(arr);
-});
- */
